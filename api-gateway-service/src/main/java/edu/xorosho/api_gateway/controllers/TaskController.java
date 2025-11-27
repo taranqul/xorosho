@@ -5,8 +5,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.xorosho.api_gateway.domains.tasks.dto.TaskRequest;
 import edu.xorosho.api_gateway.domains.tasks.dto.TaskResponse;
+import edu.xorosho.api_gateway.domains.tasks.service.TaskSchemeValidator;
 import edu.xorosho.api_gateway.domains.tasks.service.TaskService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -20,16 +23,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Tag(name="Task-related endpoints")
 @RestController
+@AllArgsConstructor
 @RequestMapping("/api/task")
 public class TaskController {
     private final TaskService taskService;
+    private final TaskSchemeValidator taskSchemeValidator;
 
-    public TaskController(TaskService taskService){
-        this.taskService = taskService;
-    }
 
     @PostMapping("/")
     public TaskResponse postTask(@RequestBody TaskRequest request) {
+        taskSchemeValidator.validateScheme(request);
         return taskService.createTask(request);
     }
     
@@ -40,7 +43,7 @@ public class TaskController {
     
     @GetMapping("/")
     public List<String> getTasks() {
-    return Arrays.asList("unimlemented");
-}
+        return Arrays.asList("unimlemented");
+    }
     
 }
