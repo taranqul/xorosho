@@ -1,5 +1,6 @@
 package edu.xorosho.api_gateway.domains.tasks.service;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
@@ -39,5 +40,18 @@ public class TaskSchemeValidator {
         if (!errors.isEmpty()) {
             throw new TaskSchemaNotValid();
         }
+    }
+    
+    public TaskSchema getTaskSchema(String name) {
+        try {
+            TaskSchema schema = this.task_scheme_repository.getSchema(name); 
+            return schema;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public List<String> getTasks(){
+        return this.task_scheme_repository.getTasks();
     }
 }

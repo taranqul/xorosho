@@ -1,6 +1,8 @@
 package edu.xorosho.api_gateway.domains.tasks.repositories;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -50,6 +52,11 @@ public class MockTaskSchemaRepository implements TaskSchemaRepository{
         }    
 
         return schema;
+    }
+
+    @Override
+    public List<String> getTasks() {
+        return new ArrayList<>(this.mock_db.keySet());
     }
 
 }

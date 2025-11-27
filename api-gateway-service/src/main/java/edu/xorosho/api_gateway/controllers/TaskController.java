@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.xorosho.api_gateway.domains.tasks.dto.TaskRequest;
 import edu.xorosho.api_gateway.domains.tasks.dto.TaskResponse;
+import edu.xorosho.api_gateway.domains.tasks.dto.TaskSchemaResponse;
 import edu.xorosho.api_gateway.domains.tasks.service.TaskSchemeValidator;
 import edu.xorosho.api_gateway.domains.tasks.service.TaskService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -13,7 +14,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,13 +37,13 @@ public class TaskController {
     }
     
     @GetMapping("/{task}/schema")
-    public String getTaskSchemas(@PathVariable String task) {
-        return new String();
+    public TaskSchemaResponse getTaskSchemas(@PathVariable String task) {
+        return new TaskSchemaResponse(taskSchemeValidator.getTaskSchema(task).getSchema());
     }
     
     @GetMapping("/")
     public List<String> getTasks() {
-        return Arrays.asList("unimlemented");
+        return taskSchemeValidator.getTasks();
     }
     
 }

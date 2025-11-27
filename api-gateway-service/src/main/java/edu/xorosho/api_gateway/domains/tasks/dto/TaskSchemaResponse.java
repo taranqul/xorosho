@@ -1,7 +1,7 @@
 package edu.xorosho.api_gateway.domains.tasks.dto;
 
 
-import com.networknt.schema.JsonSchema;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,5 +9,5 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class TaskSchemaResponse {
-    private JsonSchema requestSchema;
+    private JsonNode requestSchema;
 }
