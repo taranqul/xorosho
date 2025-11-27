@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+
+  "properties": {
+    "objects": {
+      "type": "object",
+      "additionalProperties": false
+    },
+
+    "payload": {
+      "type": "object",
+      "properties": {
+        "trace": {
+          "type": "string"
+        }
+      },
+      "required": ["trace"],
+      "additionalProperties": false
+    }
+  },
+
+  "required": ["objects", "payload"],
+  "additionalProperties": false
+}

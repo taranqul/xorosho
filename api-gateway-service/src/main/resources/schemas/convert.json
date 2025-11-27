@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+
+  "properties": {
+    "objects": {
+      "type": "object",
+      "properties": {
+        "convert": {
+          "type": "string",
+          "enum": [".mp4", ".mkv"]
+        }
+      },
+      "required": ["convert"],
+      "additionalProperties": false
+    },
+
+    "payload": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string",
+          "enum": [".mp4", ".mkv"]
+        }
+      },
+      "required": ["target"],
+      "additionalProperties": false
+    }
+  },
+
+  "required": ["objects", "payload"],
+  "additionalProperties": false
+}
